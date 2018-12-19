@@ -42,6 +42,38 @@ def newproject(request):
 
   return render(request, 'newproject.html',{'form':form,'profile':profile})
 
+@login_required(login_url='/accounts/login/')
+def newrating(request,id):
+  ida = request.user.id
+  profile = Profile.objects.get(user=ida)
+  idd = id
+
+  current_username = request.user.username
+
+  if request.method == 'POST':
+    form = NewRatingForm(request.POST)
+    if form.is_valid():
+      rating = form.save(commit=False)
+
+      design_rating = form.cleaned_data['design']
+      usability_rating = form.cleaned_data['usability']
+      content_rating = form.cleaned_data['content']
+
+      avg = ((design_rating + usability_rating + content_rating)/3)
+
+      rating.average = avg
+      rating.postername = current_username
+      rating.project = Project.objects.get(pk=id)
+
+      rating.save()
+    return redirect('project',id)
+
+  else:
+    form = NewRatingForm()
+
+  return render(request, 'newrating.html',{'form':form,'profile':profile,'idd':idd})
+
+
 
 def contact(request):
     return render(request, 'contacts.html')
