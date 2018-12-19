@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 # Create your views here.
 def welcome(request):
+    # posts= PostedSite.objects.all(),
     return render(request,'index.html')
 
 def contact(request):
@@ -22,6 +23,6 @@ def search_results(request):
         return render(request, 'search.html', context)
 
     else:
-        messages.success(request, f"You haven't searched for any term")
+        message.success(request, f"You haven't searched for any term")
 
         return render(request, 'search.html',{"message":message})

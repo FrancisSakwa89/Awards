@@ -1,106 +1,50 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-            transition: background-color .5s;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color:#33705c;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color:white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="{%url 'welcome'%}">Home</a>
-            <a href="/accounts/login">Login</a>
-            <a href="/accounts/register">Register</a>
-            <a href="#">Profile</a>
-            <a href="#">Add Sites</a>
-            <a href="{% url 'contact' %}">Contact Us</a>
-
-
+<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color: skyblue">
+        <!-- <a class="navbar-brand" href="{% url 'welcome'%}">Home</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'welcome'%}">Home <span class="sr-only">(current)</span></a>
+            </li>
+             <li class="nav-item">
+              <li><a class="nav-link" href="/accounts/login">Login</a></li>
+              <li><a class="nav-link" href="/accounts/register">Register</a></li>
+              <li><a class="nav-link" href="">Profile</a></li>
+              <li><a class="nav-link" href="">Add Site</a></li>
+              <li>
+                  <a class="nav-link disabled" href="{% url 'contact'%}">Contacts</a>
+                </li>
+            {% if user.is_authenticated %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                        <span class="caret"></span>
+                    </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a  href="{%url 'welcome'%}">Home</a>
+                </li>
+                <li>
+                  <a href="/accounts/password/change">Change Password</a>
+                </li>
+                <li>
+                  <a href="/logout">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% else %}
+          <li>
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+          </li>
+      </ul>
+          {% endif %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
-
-        <div id="main" style="background-color: #3a6073;color: whitesmoke">
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Menu</span>
-        </div>
-        <div class="franco" style="float:right;width:30%;">
-            <ul>
-                <form class="navbar-form navbar-right" action="{% url 'welcome' %}">
-                    <div class="form-group">
-                        <input type="text" class="form-control" type="search" placeholder="Search links" aria-label="Search" name="user">
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
-                </form>
-            </ul>
-        </div>
-    </nav>
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-            document.body.style.backgroundColor = "white";
-        }
-    </script>
-
-</body>
-
-</html>
+      </nav>
