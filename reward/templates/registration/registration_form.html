@@ -1,0 +1,46 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %} {% block content %}
+<div class="container">
+  <style>
+                .container{
+                    background-image: url('https://images.unsplash.com/photo-1416862291207-4ca732144d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80');
+                    background-size: cover;
+                }
+        </style>
+  <div class="row">
+    <!-- Empty div -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% if form.errors %}
+      <p> Some Information Might be Incorrect </p>
+      {% endif %}
+      <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png" width="90%"></img>
+
+      <div class="panel panel-default" style="background: linear-gradient(to right, #141e30, #243b55); color: white;">
+
+        <div class="panel-heading" style="background-color: black;color: white">
+          <h3 class="text-center">Sign Up</h3>
+        </div>
+        <div class="panel-body"  style="color: whitesmoke">
+
+          <form action="/accounts/register/" method="post">
+            {% csrf_token %} {% bootstrap_form form %}
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+              <p>Have an account ? <a href="/accounts/login/">Login</a></p>
+            </div>
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %}
