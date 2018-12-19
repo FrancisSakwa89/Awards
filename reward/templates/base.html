@@ -1,0 +1,38 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+ <html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if title %}
+    <title>Awards - {{title}}</title>
+    {% else %}
+    <title>Insta</title>
+    {% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" type='text/css' href="{% static 'css/styles.css' %}">
+    {% endblock %}
+
+  </head>
+  <body>
+    
+    {% include 'navbar.html' %}
+
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+    {% block scripts %}
+  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      {% bootstrap_javascript %}
+    {% endblock %}
+    
+    <script src="" async defer></script>
+  </body>
+</html>
