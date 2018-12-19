@@ -13,6 +13,15 @@ class ProjectList(APIView):
     serializers = ProjectSerializer(all_projects, many=True)
     return Response(serializers.data)
 
+def mail(request):
+  name = request.user.username
+  email = request.user.email
+  
+  send_welcome_email(name,email)
+
+  return HttpResponseRedirect(reverse('homepage'))
+
+
 
 def contact(request):
     return render(request, 'contacts.html')
