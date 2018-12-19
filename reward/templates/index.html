@@ -2,6 +2,33 @@
 
 <h3 style="text-align: center; color: green;padding-top:50px;">AWARDS</h3>
 
+<div class="container">
+
+        <div class="intro">
+          <h2>Projects</h2>
+        </div>
+      <hr>
+      <br>
+      {% if projects %}
+      {% for project in projects %}
+      <div class="card bg-dark text-white">
+          <img class='streamimg' src="{{project.image.url}}" alt="{{ project.title }}">
+          <div class="card-img-overlay">
+            <h5 class="card-title firstletter">{{project.title}}</h5>
+            <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
+            <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+          </div>
+        </div>
+        <br>
+      {% endfor %}
+      
+      
+      {% else %}
+      <h4>No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
+      {% endif %}
+      </div>
+
+
 
 <div class="app-download-links">
         <!-- <p style="font-family: 'Shadows Into Light', cursive;color: black;font-size: 4opx">Get the app.</p> -->

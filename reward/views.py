@@ -41,8 +41,8 @@ def mail(request):
   return HttpResponseRedirect(reverse('welcome'))
 
 def newproject(request):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
 
   current_user = request.user
   current_username = request.user.username
@@ -63,8 +63,8 @@ def newproject(request):
 
 @login_required(login_url='/accounts/login/')
 def newrating(request,id):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   id = id
 
   current_username = request.user.username
@@ -158,19 +158,27 @@ def contact(request):
     return render(request, 'contacts.html')
 
 def search_results(request):
-    if 'searchItem' in request.GET and request.GET["searchItem"]:
-        search_term = request.GET.get("searchItem")
-        searched_project = PostedSite.search_by_site(search_term)
-        # user = User.objects.get(username=searched_user)
-        # user_images = Profile.objects.get(user=searched_user)
-        message = f"{search_term}"
-        context = {
-            'message': message,
-            'projects': searched_project
-        }
-        return render(request, 'search.html', context)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
 
-    else:
-        message.success(request, f"You haven't searched for any term")
 
-        return render(request, 'search.html',{"message":message})
+  if 'project' in request.GET and request.GET['project']:
+    search_term = request.GET.get('project')
+    message = f'{search_term}'
+    title = 'Search Results'
+
+    try:
+      no_ws = search_term.strip()
+      searched_projects = Project.objects.filter(title__icontains = no_ws)
+
+    except ObjectDoesNotExist:
+      searched_projects = []
+
+    return render(request, 'search.html',{'message':message ,'title':title, 'searched_projects':searched_projects,'profile':profile})
+
+  else:
+    message = 'You haven\'t searched for any users'
+    
+    title = 'Search Error'
+    return render(request,'search.html',{'message':message,'title':title,'profile':profile})
+
