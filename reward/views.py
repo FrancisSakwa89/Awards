@@ -2,9 +2,15 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def welcome(request):
-    # posts= PostedSite.objects.all(),
-    return render(request,'index.html')
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  projects = Project.objects.all().order_by('-pub_date')
+
+  return render(request, 'index.html',{'projects':projects,'profile':profile})
+
 
 
 class ProjectList(APIView):
@@ -19,7 +25,7 @@ def mail(request):
   
   send_welcome_email(name,email)
 
-  return HttpResponseRedirect(reverse('homepage'))
+  return HttpResponseRedirect(reverse('welcome'))
 
 def newproject(request):
   ida = request.user.id
@@ -35,18 +41,18 @@ def newproject(request):
       project.poster = current_user
       project.postername = current_username
       project.save()
-    return redirect('homepage')
+    return redirect('welcome')
 
   else:
     form = NewProjectForm()
 
-  return render(request, 'newproject.html',{'form':form,'profile':profile})
+  return render(request, 'project.html',{'form':form,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
 def newrating(request,id):
   ida = request.user.id
   profile = Profile.objects.get(user=ida)
-  idd = id
+  id = id
 
   current_username = request.user.username
 
@@ -71,8 +77,68 @@ def newrating(request,id):
   else:
     form = NewRatingForm()
 
-  return render(request, 'newrating.html',{'form':form,'profile':profile,'idd':idd})
+  return render(request, 'rating.html',{'form':form,'profile':profile,'id':id})
 
+@login_required(login_url='/accounts/login/')
+def profile(request, id):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+
+  user = request.user
+  
+  myprofile = Profile.objects.get(pk=id)
+
+  projects = Project.objects.filter(poster=frank).order_by('-pub_date')
+  projectcount=projects.count()
+
+
+  return render(request, 'profile.html',{'profile':profile,'myprofile':myprofile,'user':user,'projectcount':projectcount,'projects':projects})
+
+
+@login_required(login_url='/accounts/login/')
+def project(request, id):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+  
+  project = Project.objects.get(pk=id)
+  ratings = Rating.objects.filter(project=id)
+
+  
+  project = Project.objects.get(pk=id)
+
+  a = Rating.objects.filter(project=id).aggregate(Avg('design'))
+  b = Rating.objects.filter(project=id).aggregate(Avg('usability'))
+  c = Rating.objects.filter(project=id).aggregate(Avg('content'))
+  d = Rating.objects.filter(project=id).aggregate(Avg('average'))
+  
+
+
+  return render(request, 'project.html',{'profile':profile,'project':project,'ratings':ratings,'a':a,'b':b,'c':c,'d':d})
+
+
+
+@login_required(login_url='/accounts/login/')
+def newprofile(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+  # current_user = request.user
+  # current_username = request.user.username
+  
+  if request.method == 'POST':
+    instance = get_object_or_404(Profile, user=frank)
+    form = ProfileForm(request.POST, request.FILES,instance=instance)
+    if form.is_valid():
+      form.save()
+      # u_profile = form.save(commit=False)
+      # u_profile.user = current_user
+      # u_profile.save()
+
+    return redirect('profile', frank)
+
+  else:
+    form = ProfileForm()
+
+  return render(request, 'profile.html',{'form':form,'profile':profile})
 
 
 def contact(request):
