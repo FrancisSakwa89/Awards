@@ -5,4 +5,6 @@ from . import views
 
 urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
+    url(r'^contact/', views.contact, name='contact'),
+
 ]    
