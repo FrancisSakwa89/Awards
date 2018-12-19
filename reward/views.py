@@ -21,6 +21,26 @@ def mail(request):
 
   return HttpResponseRedirect(reverse('homepage'))
 
+def newproject(request):
+  ida = request.user.id
+  profile = Profile.objects.get(user=ida)
+
+  current_user = request.user
+  current_username = request.user.username
+
+  if request.method == 'POST':
+    form = NewProjectForm(request.POST, request.FILES)
+    if form.is_valid():
+      project = form.save(commit=False)
+      project.poster = current_user
+      project.postername = current_username
+      project.save()
+    return redirect('homepage')
+
+  else:
+    form = NewProjectForm()
+
+  return render(request, 'newproject.html',{'form':form,'profile':profile})
 
 
 def contact(request):
