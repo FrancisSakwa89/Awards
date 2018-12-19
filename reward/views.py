@@ -6,6 +6,14 @@ def welcome(request):
     # posts= PostedSite.objects.all(),
     return render(request,'index.html')
 
+
+class ProjectList(APIView):
+  def get(self, request, format=None):
+    all_projects = Project.objects.all()
+    serializers = ProjectSerializer(all_projects, many=True)
+    return Response(serializers.data)
+
+
 def contact(request):
     return render(request, 'contacts.html')
 
