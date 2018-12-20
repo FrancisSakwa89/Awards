@@ -14,4 +14,8 @@ urlpatterns=[
     url(r'^new/profile$',views.newprofile, name='newprofile'),
     url(r'^mail$',views.mail,name='mail'),
     url(r'^api/projects/$', views.ProjectList.as_view()),
-]    
+    url(r'^subscribe/', views.subscribe, name='subscribe'),
+]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

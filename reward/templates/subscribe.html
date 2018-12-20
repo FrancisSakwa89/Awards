@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="jumbotron">
+<form  action="{%url 'subscribe'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
+        {%csrf_token%}
+    
+        {% bootstrap_form letterForm layout='inline' %}
+        <input type="submit" class="btn btn-primary" value="Subscribe">
+      </form>
+      <style>
+        .jumbotron {
+            background-image: url('https://images.unsplash.com/photo-1416862291207-4ca732144d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80');
+            background-size: cover;
+        }
+        </style>
+        </div>
+      {% endblock %}

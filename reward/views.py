@@ -7,12 +7,13 @@ from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .forms import ProjectForm, RatingForm, ProfileForm
-from .models import Project, Rating, Profile
+from .models import Project, Rating, Profile,AwardLetterRecipients
 from .email import send_welcome_email
 from django.db.models import Avg
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProjectSerializer, ProfileSerializer
+from .forms import AwardLetterForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -181,3 +182,18 @@ def search_results(request):
 
 def contact(request):
     return render(request, 'contacts.html')
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        form = AwardLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = AwardLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+            HttpResponseRedirect('index.html')
+    else:
+        form = AwardLetterForm()
+    return render(request, 'subscribe.html', {'letterForm':form})    
