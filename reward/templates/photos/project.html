@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <div class="intro">
+      <h2 class="firstletter">{{project.title}}</h2>
+    </div>
+  <hr>
+  
+  <div class="card mb-3 bg-dark">
+    <img class='soloimg' src="{{project.image.url}}" alt="{{ project.title }}">
+    <div class="card-body">
+      <h5 class="card-title firstletter">{{project.title}}</h5>
+      <p class="card-text">
+        <p>{{project.description}}</p>
+        <p><a target="_blank" href="{{ project.link }}"><button type="button" class="btn btn-info">View Site</button></a>
+        </p>
+      </p>
+      <p class="card-text"><small class="text-muted">Project by: {{project.postername}}</small></p>
+    </div>
+  </div>
+  <p></p>
+  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
+  <br>
+  <br>
+
+  
+  {% if ratings%}
+  <h5>Overall Ratings</h5>
+  <div class="card text-white bg-secondary mb-3">
+      <div class="card-body firstletter" >
+          <p>Design: {{a.design__avg | floatformat:1}}</p>
+          <p>Usability: {{b.usability__avg | floatformat:1}}</p>
+          <p>Content: {{c.content__avg | floatformat:1}}</p>
+          <p>Average: {{d.average__avg | floatformat:1}}</p>
+      </div>
+    </div>
+  <br>
+
+  <h5>User Ratings</h5>
+  {% for rating in ratings %}
+  <div class="card text-white bg-secondary mb-3">
+      <div class="card-body firstletter" >
+          <p>Design: {{rating.design}}</p>
+          <p>Usability: {{rating.usability}}</p>
+          <p>Content: {{rating.content}}</p>
+          <p></p>
+          <p>Average: {{rating.average}}</p>
+        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{rating.postername}}</cite></footer>
+      </div>
+    </div>
+  <p></p>
+  {% endfor %}
+
+  {% else %}
+  <h4> No Ratings Upto Now</h4>
+  {% endif %}
+</div>
+
+{% endblock %}

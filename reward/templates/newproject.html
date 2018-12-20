@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Update Profile</title>
+  <title>New Project</title>
   {{form.media}}
 
 {% block styles %} {% bootstrap_css %}
@@ -17,16 +17,17 @@
 
 <body>
   {% include 'navbar.html' %}
-  <div class="container">
-      <div class="intro">
-          <h2>Update Profile</h2>
-        </div>
-  <hr>
-  <form  action="{%url 'newprofile' %}" method="post" enctype="multipart/form-data">
+<div class="container">
+
+    <div class="intro">
+        <h2>New Project</h2>
+      </div>
+<hr>
+  <form  action="{%url 'newproject'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Update Profile">
+    <input type="submit" class="btn btn-success btn-lg" value="Add Project">
   </form>
 
   {% block scripts %}

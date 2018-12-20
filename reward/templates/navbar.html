@@ -12,14 +12,14 @@
              <li class="nav-item">
               <li><a class="nav-link" href="/accounts/login">Login</a></li>
               <li><a class="nav-link" href="/accounts/register">Register</a></li>
-              <li><a class="nav-link" href="{% url 'newprofile' %}">Profile</a></li>
+              <li><a class="nav-link" href="{% url 'profile' profile.id %}">Profile</a></li>
               <li><a class="nav-link" href="{% url 'newproject' %}">Add Site</a></li>
               <li>
-                  <a class="nav-link disabled" href="{% url 'contact'%}">Contacts</a>
+                  <a class="nav-link" href="{% url 'contact'%}">Contacts</a>
                 </li>
             {% if user.is_authenticated %}
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown" role="button" aria-expanded="false">Account
+              <a href="#" class="dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" role="button" aria-expanded="false">Account
                         <span class="caret"></span>
                     </a>
               <ul class="dropdown-menu" role="menu">

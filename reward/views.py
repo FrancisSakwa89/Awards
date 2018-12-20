@@ -59,7 +59,7 @@ def newproject(request):
   else:
     form = ProjectForm()
 
-  return render(request, 'project.html',{'form':form,'profile':profile})
+  return render(request, 'newproject.html',{'form':form,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
 def newrating(request,id):
@@ -70,7 +70,7 @@ def newrating(request,id):
   current_username = request.user.username
 
   if request.method == 'POST':
-    form = NewRatingForm(request.POST)
+    form = RatingForm(request.POST)
     if form.is_valid():
       rating = form.save(commit=False)
 
@@ -88,7 +88,7 @@ def newrating(request,id):
     return redirect('project',id)
 
   else:
-    form = NewRatingForm()
+    form = RatingForm()
 
   return render(request, 'rating.html',{'form':form,'profile':profile,'id':id})
 
@@ -105,7 +105,7 @@ def profile(request, id):
   projectcount=projects.count()
 
 
-  return render(request, 'profile.html',{'profile':profile,'myprofile':myprofile,'user':user,'projectcount':projectcount,'projects':projects})
+  return render(request, 'photos/profile.html',{'profile':profile,'myprofile':myprofile,'user':user,'projectcount':projectcount,'projects':projects})
 
 
 @login_required(login_url='/accounts/login/')
@@ -126,7 +126,7 @@ def project(request, id):
   
 
 
-  return render(request, 'project.html',{'profile':profile,'project':project,'ratings':ratings,'a':a,'b':b,'c':c,'d':d})
+  return render(request, 'photos/project.html',{'profile':profile,'project':project,'ratings':ratings,'a':a,'b':b,'c':c,'d':d})
 
 
 
@@ -151,11 +151,8 @@ def newprofile(request):
   else:
     form = ProfileForm()
 
-  return render(request, 'profile.html',{'form':form,'profile':profile})
+  return render(request, 'photos/profile.html',{'form':form,'profile':profile})
 
-
-def contact(request):
-    return render(request, 'contacts.html')
 
 def search_results(request):
   frank = request.user.id
@@ -182,3 +179,5 @@ def search_results(request):
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
+def contact(request):
+    return render(request, 'contacts.html')
