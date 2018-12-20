@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth import views 
-from django_registration.backends.one_step.views import RegistrationView
 
 
 urlpatterns = [
@@ -24,8 +23,4 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {"next_page": '/'}), 
     url(r'^admin/', admin.site.urls),
     url(r'',include('reward.urls')),
-    
-    url(r'^accounts/register/',
-        RegistrationView.as_view(success_url='/mail'),
-        name='django_registration_register'),
 ]

@@ -14,5 +14,4 @@ urlpatterns=[
     url(r'^new/profile$',views.newprofile, name='newprofile'),
     url(r'^mail$',views.mail,name='mail'),
     url(r'^api/projects/$', views.ProjectList.as_view()),
-    url(r'^api/profiles/$', views.ProfileList.as_view()),
 ]    

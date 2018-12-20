@@ -26,7 +26,7 @@
   <form  action="{%url 'newproject'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
-    {% bootstrap_form form%}
+    {% bootstrap_form form layout='inline'%}
     <input type="submit" class="btn btn-success btn-lg" value="Add Project">
   </form>
 

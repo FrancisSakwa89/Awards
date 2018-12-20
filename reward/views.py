@@ -48,7 +48,7 @@ def newproject(request):
   current_username = request.user.username
 
   if request.method == 'POST':
-    form = NewProjectForm(request.POST, request.FILES)
+    form = ProjectForm(request.POST, request.FILES)
     if form.is_valid():
       project = form.save(commit=False)
       project.poster = current_user
@@ -57,7 +57,7 @@ def newproject(request):
     return redirect('welcome')
 
   else:
-    form = NewProjectForm()
+    form = ProjectForm()
 
   return render(request, 'project.html',{'form':form,'profile':profile})
 
