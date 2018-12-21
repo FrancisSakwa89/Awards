@@ -100,13 +100,12 @@ def profile(request, id):
 
   user = request.user
   
-  myprofile = Profile.objects.get(pk=id)
 
   projects = Project.objects.filter(poster=frank).order_by('-pub_date')
   projectcount=projects.count()
 
 
-  return render(request, 'photos/profile.html',{'profile':profile,'myprofile':myprofile,'user':user,'projectcount':projectcount,'projects':projects})
+  return render(request, 'photos/profile.html',{'profile':profile,'user':user,'projectcount':projectcount,'projects':projects})
 
 
 @login_required(login_url='/accounts/login/')
@@ -155,6 +154,7 @@ def newprofile(request):
   return render(request, 'newprofile.html',{'form':form,'profile':profile})
 
 
+@login_required(login_url='/accounts/login/')
 def search_results(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
@@ -167,15 +167,15 @@ def search_results(request):
 
     try:
       no_ws = search_term.strip()
-      searched_projects = Project.objects.filter(title__icontains = no_ws)
+      searched_project = Project.objects.filter(title__icontains = no_ws)
 
     except ObjectDoesNotExist:
       searched_projects = []
 
-    return render(request, 'search.html',{'message':message ,'title':title, 'searched_projects':searched_projects,'profile':profile})
+    return render(request, 'search.html',{'message':message ,'title':title, 'searched_project':searched_project,'profile':profile})
 
   else:
-    message = 'You haven\'t searched for any project'
+    message = 'You haven\'t searched for any Project'
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
@@ -183,7 +183,7 @@ def search_results(request):
 def contact(request):
     return render(request, 'contacts.html')
 
-
+@login_required(login_url='/accounts/login/')
 def subscribe(request):
     if request.method == 'POST':
         form = AwardLetterForm(request.POST)

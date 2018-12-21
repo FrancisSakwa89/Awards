@@ -8,7 +8,7 @@
 <hr>
 {% if profile.bio %}
 <div id='user-details'>
-    <p><img class="circularsquare" src="{{profile.photo.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
+    <p><img class="circular" src="{{profile.photo.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
     </p>
     <p>
       <span class='repo-owner' style=>Projects: </span>{{projectcount}}
@@ -27,27 +27,26 @@
     <br>
     <br>
   {% endif %}
-    <div class="your-photos">
       <h4>Your projects</h4>
       <p></p>
-{% if projects %}
-{% for project in projects %}
-<div class="card bg-dark text-white" style="margin-right: 40%">
-    <img class='streamimg' src="{{project.image.url}}" height="200px" width="40%" alt="{{ project.title }}">
-    <div class="card-img-overlay">
-      <h5 class="card-title firstletter">{{project.title}}</h5>
-      <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
-      <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
-    </div>
-  </div>
-  <br>
-{% endfor %}
-{% else %}
-<h4>No projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
-{% endif %}
-
-    </div>
-</div>
+      {% if projects %}
+      {% for project in projects %}
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="color:white">
+          <img class='streamimg' src="{{project.image.url}}" height="300px" width="95%"  alt="{{ project.title }}"></img>
+          <br>
+            <h5 class="card-title firstletter">{{project.title}}</h5>
+            <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
+            <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+            <br>
+        </div>
+        <br>
+      {% endfor %}
+      
+      
+      {% else %}
+      <h4 style="text-align: center">No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
+      {% endif %}
+      </div>
 
 
 {% endblock %}

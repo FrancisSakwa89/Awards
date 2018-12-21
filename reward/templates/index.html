@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% load bootstrap4 %} {% block content %}
 
-<h3 style="text-align: center; color: green;padding-top:50px;">AWARDSITE</h3>
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Lobster" rel="stylesheet">
+
+<h3 style="text-align: center; color: green;padding-top:50px;font-family: 'Abril Fatface', cursive;">AWARDSITE</h3>
 <div class="row">
 <div class="container">
     <style>
@@ -11,13 +13,13 @@
         }
         </style>
 
-          <h2 style="color: white;text-align: center">Projects</h2>
+          <h2 style="color: white;text-align: center;font-family: 'Lobster', cursive;">Posted Projects</h2>
         </div>
       <br>
       {% if projects %}
       {% for project in projects %}
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="color:white">
-          <img class='streamimg' src="{{project.image.url}}" height="200px" width="98%"  alt="{{ project.title }}"></img>
+          <img class='streamimg' src="{{project.image.url}}" height="300px" width="95%"  alt="{{ project.title }}"></img>
           <br>
             <h5 class="card-title firstletter">{{project.title}}</h5>
             <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
@@ -32,8 +34,38 @@
       <h4 style="text-align: center">No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
       {% endif %}
       </div>
-</div>
+
+      <div class="app-download-links">
+            <!-- <p style="font-family: 'Shadows Into Light', cursive;color: black;font-size: 4opx">Get the app.</p> -->
+            <a href="https://www.apple.com/ke/ios/app-store/">
+                <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png" alt="Download on App Store"
+                />
+            </a>
+            <a href="https://play.google.com/store?utm_source=emea_Med&utm_medium=hasem&utm_content=Feb2017&utm_campaign=Evergreen&pcampaignid=MKT-DR-emea-ke-1001280-Med-hasem-py-Evergreen-Feb2017-Text_Search_BKWS%7cONSEM_kwid_43700008633139486&gclid=Cj0KCQiA6dLgBRDoARIsAJgoM4v0Z8s7IrUKM5fEeZmJ_PObJ0YAkeQbk0_3K_FdNaGjv-rfvkBtXPcaAjeYEALw_wcB&gclsrc=aw.ds">
+                <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-googleplay.png" alt="Download on Google Play"
+                />
+            </a>
+            <a href="https://www.microsoft.com/en-us/store/top-free/apps/pc">
+                <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-microsoft.png" alt="Get from Microsoft"
+                />
+            </a>
+        </div>
+        <style>
+            .app-download-links {
+                text-align: center;
+            }
+            .app-download-links p{
+                margin-bottom: 280px;
+            }
+            .app-download-links a img {
+                height: 45px;
+                margin: 0 7px 20px;
+            /* }
+            p{
+                margin-bottom: 280px;
+            } */
+        </style>
 
 
-<!--  -->
+
       {% endblock %}
