@@ -8,7 +8,7 @@
     </div>
   <hr>
   
-  <div class="card mb-3 bg-dark">
+  <div class="col-md-6 col-md-6 bg-dark">
     <img class='soloimg' src="{{project.image.url}}" alt="{{ project.title }}">
     <div class="card-body">
       <h5 class="card-title firstletter">{{project.title}}</h5>
@@ -17,7 +17,7 @@
         <p><a target="_blank" href="{{ project.link }}"><button type="button" class="btn btn-info">View Site</button></a>
         </p>
       </p>
-      <p class="card-text"><small class="text-muted">Project by: {{project.postername}}</small></p>
+      <p class="card-text" style="color: whitesmoke">Project by: {{project.postername}}</p>
     </div>
   </div>
   <p></p>
@@ -25,10 +25,10 @@
   <br>
   <br>
 
-  
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   {% if ratings%}
   <h5>Overall Ratings</h5>
-  <div class="card text-white bg-secondary mb-3">
+  <div class="card text-white bg-primary mb-3">
       <div class="card-body firstletter" >
           <p>Design: {{a.design__avg | floatformat:1}}</p>
           <p>Usability: {{b.usability__avg | floatformat:1}}</p>
@@ -40,7 +40,7 @@
 
   <h5>User Ratings</h5>
   {% for rating in ratings %}
-  <div class="card text-white bg-secondary mb-3">
+  <div class="card text-white bg-primary mb-3">
       <div class="card-body firstletter" >
           <p>Design: {{rating.design}}</p>
           <p>Usability: {{rating.usability}}</p>
@@ -52,6 +52,7 @@
     </div>
   <p></p>
   {% endfor %}
+  </div>
 
   {% else %}
   <h4> No Ratings Upto Now</h4>

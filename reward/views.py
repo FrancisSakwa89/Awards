@@ -152,7 +152,7 @@ def newprofile(request):
   else:
     form = ProfileForm()
 
-  return render(request, 'photos/profile.html',{'form':form,'profile':profile})
+  return render(request, 'newprofile.html',{'form':form,'profile':profile})
 
 
 def search_results(request):

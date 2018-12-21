@@ -16,20 +16,20 @@
       <br>
       {% if projects %}
       {% for project in projects %}
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <img class='streamimg' src="{{project.image.url}}" alt="{{ project.title }}">
-          <div class="card-img-overlay">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="color:white">
+          <img class='streamimg' src="{{project.image.url}}" height="200px" width="98%"  alt="{{ project.title }}"></img>
+          <br>
             <h5 class="card-title firstletter">{{project.title}}</h5>
             <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
             <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
-          </div>
+            <br>
         </div>
         <br>
       {% endfor %}
       
       
       {% else %}
-      <h4>No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
+      <h4 style="text-align: center">No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
       {% endif %}
       </div>
 </div>

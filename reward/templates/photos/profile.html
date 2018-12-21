@@ -16,7 +16,7 @@
 </div>
     {{profile.bio}}
     <p></p>
-    <span><a class='maillink' href="mailto:{{profile.contact}}">{{profile.contact}}</a></span>
+    <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">{{profile.contact}}</a></span>
     <p></p>
     <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
     <br>
@@ -32,8 +32,8 @@
       <p></p>
 {% if projects %}
 {% for project in projects %}
-<div class="card bg-dark text-white">
-    <img class='streamimg' src="{{project.image.url}}" alt="{{ project.title }}">
+<div class="card bg-dark text-white" style="margin-right: 40%">
+    <img class='streamimg' src="{{project.image.url}}" height="200px" width="40%" alt="{{ project.title }}">
     <div class="card-img-overlay">
       <h5 class="card-title firstletter">{{project.title}}</h5>
       <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>

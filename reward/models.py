@@ -70,3 +70,7 @@ class Rating(models.Model):
 
   def delete_rating(self):
     self.delete()
+
+class AwardLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()    
