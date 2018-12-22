@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from . import views
 
+
 urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
     url(r'^contact/', views.contact, name='contact'),
@@ -16,3 +17,6 @@ urlpatterns=[
     url(r'^api/projects/$', views.ProjectList.as_view()),
     url(r'^subscribe/', views.subscribe, name='subscribe'),
 ]    
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
