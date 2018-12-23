@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .forms import ProjectForm, RatingForm, ProfileForm
-from .models import Project, Rating, Profile,AwardLetterRecipients
+from .models import Project, Rating, Profile
 from .email import send_welcome_email
 from django.db.models import Avg
 from rest_framework.response import Response

@@ -4,21 +4,21 @@
 
 <div class="container">
         <div class="intro">
-                <h2>Search Results</h2>
+                <h2>Searching...</h2>
             </div>
             <hr>
         
-{% if searched_projects %}
-    <h5>Found {{ searched_projects|length }} projects for the searched term '{{message}}'</h5>
+{% if searched_project %}
+    <h5>Found {{ searched_projects|length }} project(s) for the searched term '{{message}}'</h5>
 {% else %}
-    <h5> Found 0 projects for the search term '{{message}}'</h5>
+    <h5> Found 0 project(s) for the search term '{{message}}'</h5>
 {% endif %}
 
 <br>
 
-{% if searched_projects %}
+{% if searched_project %}
 <ul class="list-group list-group-flush">
-        {% for project in searched_projects %}
+        {% for project in searched_project %}
         <li class="list-group-item" style="background-color: transparent;">
             <p class="firstletter">{{project.title}}
             <a href="{% url 'project' project.id %}" style="float:right;">
