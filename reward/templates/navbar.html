@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color: skyblue">
+<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color:skyblue;">
         <!-- <a class="navbar-brand" href="{% url 'welcome'%}">Home</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -7,14 +7,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'welcome'%}">Home <span class="sr-only">(current)</span></a>
+              <a class="btn btn-outline-primary" href="{% url 'welcome'%}">Home <span class="sr-only">(current)</span></a>
             </li>
-             <li class="nav-item">
-              <li><a class="nav-link" href="/accounts/login">Login</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" role="button" aria-expanded="false">More Apps
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>              <li><a class="nav-link" href="/accounts/login">Login</a></li>
               <li><a class="nav-link" href="/accounts/register">Register</a></li>
               <li><a class="nav-link" href="{% url 'profile' profile.id %}">Profile</a></li>
               <li><a class="nav-link" href="{% url 'newproject' %}">Add Site</a></li>
               <li><a class="nav-link" href="{% url 'newprofile' %}">Add Profile</a></li>
+              <li><a class="nav-link" href="{% url 'contact' %}">Contacts</a></li>
+              <li><a class="nav-link" href="{% url 'subscribe' %}">Subscribe</a></li>
+              <li><a class="nav-link" href="{% url 'myprojects' %}">My Projects</a></li>
+                </li>
+              </ul>
+              <!-- <br> -->
               <!-- <li>
                   <a class="nav-link" href="{% url 'contact'%}">Contacts</a>
                 </li>
@@ -50,3 +60,9 @@
           </form>
         </div>
       </nav>
+      <style>
+       
+      li{
+         color:green;
+      }
+      </style> 

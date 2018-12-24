@@ -16,6 +16,8 @@ urlpatterns=[
     url(r'^mail$',views.mail,name='mail'),
     url(r'^api/projects/$', views.ProjectList.as_view()),
     url(r'^subscribe/', views.subscribe, name='subscribe'),
+    url(r'^myprojects/', views.myprojects, name='myprojects'),
+
 ]    
 
 if settings.DEBUG:

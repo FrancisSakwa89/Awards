@@ -28,13 +28,11 @@
         </div>
         <br>
       {% endfor %}
-      
-      
       {% else %}
-      <h4 style="text-align: center">No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
+      <h3> Add Projects<a href="{% url 'newproject' %}">here</a>.</h3>
       {% endif %}
       </div>
-
+<br>
       <div class="app-download-links">
             <!-- <p style="font-family: 'Shadows Into Light', cursive;color: black;font-size: 4opx">Get the app.</p> -->
             <a href="https://www.apple.com/ke/ios/app-store/">

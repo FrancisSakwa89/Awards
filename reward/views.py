@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .forms import ProjectForm, RatingForm, ProfileForm
-from .models import Project, Rating, Profile
+from .models import Project, Rating, Profile,AwardLetterRecipients
 from .email import send_welcome_email
 from django.db.models import Avg
 from rest_framework.response import Response
@@ -24,6 +24,17 @@ def welcome(request):
   projects = Project.objects.all().order_by('-pub_date')
 
   return render(request, 'index.html',{'projects':projects,'profile':profile})
+
+
+@login_required(login_url='/accounts/login/')
+def myprojects(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  projects = Project.objects.all().order_by('-pub_date')
+
+  return render(request, 'myproject.html',{'projects':projects,'profile':profile})
+
 
 
 
@@ -181,10 +192,15 @@ def search_results(request):
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
 def contact(request):
-    return render(request, 'contacts.html')
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  return render(request, 'contacts.html', {'profile':profile})
 
 @login_required(login_url='/accounts/login/')
 def subscribe(request):
+    id = request.user.id
+    profile = Profile.objects.get(user=id)
     if request.method == 'POST':
         form = AwardLetterForm(request.POST)
         if form.is_valid():
@@ -196,4 +212,4 @@ def subscribe(request):
             HttpResponseRedirect('index.html')
     else:
         form = AwardLetterForm()
-    return render(request, 'subscribe.html', {'letterForm':form})    
+    return render(request, 'subscribe.html', {'letterForm':form,'profile':profile})    

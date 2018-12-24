@@ -8,7 +8,7 @@
 <hr>
 {% if profile.bio %}
 <div id='user-details'>
-    <p><img class="circular" src="{{profile.photo.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
+    <p><img class="circular" src="{{profile.photo.url}}" alt="Avatar"><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
     </p>
     <p>
       <span class='repo-owner' style=>Projects: </span>{{projectcount}}
@@ -31,7 +31,7 @@
       <p></p>
       {% if projects %}
       {% for project in projects %}
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="color:white">
+      <div class="col-sm-6 col-xs-6 col-md-6">
           <img class='streamimg' src="{{project.image.url}}" height="300px" width="95%"  alt="{{ project.title }}"></img>
           <br>
             <h5 class="card-title firstletter">{{project.title}}</h5>

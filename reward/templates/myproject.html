@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% load bootstrap4 %} {% block content %}
+
+<div class="container">
+        <style>
+            
+            .container{
+                background: linear-gradient(to right, #16222a, #3a6073);
+                background-size: cover;
+            }
+            </style>
+    
+              <h2 style="color: white;text-align: center;font-family: 'Lobster', cursive;">Posted Projects</h2>
+            </div>
+          <br>
+          {% if projects %}
+          {% for project in projects %}
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="color:white">
+              <img class='streamimg' src="{{project.image.url}}" height="300px" width="95%"  alt="{{ project.title }}"></img>
+              <br>
+                <h5 class="card-title firstletter">{{project.title}}</h5>
+                <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
+                <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+                <br>
+            </div>
+            <br>
+          {% endfor %}
+          {% else %}
+          <h3> Add Projects<a href="{% url 'newproject' %}">here</a>.</h3>
+          {% endif %}
+          </div>
+          {% endblock %}
