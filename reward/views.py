@@ -37,7 +37,6 @@ def myprojects(request):
 
 
 
-
 class ProjectList(APIView):
   def get(self, request, format=None):
     all_projects = Project.objects.all()
@@ -52,6 +51,7 @@ def mail(request):
 
   return HttpResponseRedirect(reverse('welcome'))
 
+@login_required(login_url='/accounts/login/')
 def newproject(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
@@ -191,6 +191,8 @@ def search_results(request):
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
+
+@login_required(login_url='/accounts/login/')
 def contact(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
