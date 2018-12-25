@@ -3,13 +3,13 @@
 {% block content %}
 <div class="container">
 
-    <div class="intro">
-      <h2 class="firstletter">{{project.title}}</h2>
+    <div class="col-md-4 mx-auto">
+        <h2 class="firstletter">{{project.title}}</h2>
     </div>
   <hr>
   
-  <div class="col-md-6 col-md-6 bg-dark">
-    <img class='soloimg' src="{{project.image.url}}" alt="{{ project.title }}">
+  <div class="col-md-4 mx-auto">
+      <img class='soloimg' src="{{project.image.url}}" alt="{{ project.title }}">
     <div class="card-body">
       <h5 class="card-title firstletter">{{project.title}}</h5>
       <p class="card-text">
@@ -21,26 +21,27 @@
     </div>
   </div>
   <p></p>
-  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
+  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary" style="margin-right: 30%">Rate</button></a>
   <br>
   <br>
 
   {% if ratings%}
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-  <br>
+  <div class="col-md-4 mx-auto">
+      <br>
 
   <h5>User Ratings</h5>
   {% for rating in ratings %}
   <div class="card text-white bg-primary mb-3">
-      <div class="card-body firstletter" >
+      <div class="col-md-4 mx-auto">
           <p>Design: {{rating.design}}</p>
           <p>Usability: {{rating.usability}}</p>
           <p>Content: {{rating.content}}</p>
           <p></p>
           <p>Average: {{rating.average}}</p>
-        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{rating.postername}}</cite></footer>
+        <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite title="Source Title">Rated By: {{rating.postername}}</cite></footer>
       </div>
     </div>
+  </div>
   <p></p>
   {% endfor %}
   </div>
