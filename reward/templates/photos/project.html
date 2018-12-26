@@ -20,8 +20,9 @@
       <p class="card-text" style="color: whitesmoke">Project by: {{project.postername}}</p>
     </div>
   </div>
-  <p></p>
-  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary" style="margin-right: 30%">Rate</button></a>
+  <div class="card-letter" style="text-align:center">
+  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
+  </div>
   <br>
   <br>
 
@@ -48,8 +49,14 @@
 </div>
 
   {% else %}
-  <h4> No Ratings Upto Now</h4>
+  <h4 style="text-align:center"> No Ratings Upto Now</h4>
   {% endif %}
 </div>
+<style>
 
+.btn btn-primary{
+  text-align: center;
+  margin-right: 50%;
+}
+</style>
 {% endblock %}

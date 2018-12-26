@@ -16,7 +16,7 @@ from .serializer import ProjectSerializer, ProfileSerializer
 from .forms import AwardLetterForm
 
 # Create your views here.
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def welcome(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
@@ -34,6 +34,16 @@ def myprojects(request):
   projects = Project.objects.all().order_by('-pub_date')
 
   return render(request, 'myproject.html',{'projects':projects,'profile':profile})
+
+
+@login_required(login_url='/accounts/login/')
+def password(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  # projects = Project.objects.all().order_by('-pub_date')
+
+  return render(request, 'password.html',{'profile':profile})
 
 
 

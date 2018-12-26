@@ -17,6 +17,8 @@ urlpatterns=[
     url(r'^api/projects/$', views.ProjectList.as_view()),
     url(r'^subscribe/', views.subscribe, name='subscribe'),
     url(r'^myprojects/', views.myprojects, name='myprojects'),
+    url(r'^password/', views.password, name='password'),
+
 
 ]    
 
