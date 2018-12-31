@@ -18,7 +18,7 @@ A clone of the website for the popular  app Instagram.
 8. Tap 'Update Profile' to add or change your profile picture, profile bio or contact information.
 9. Enter a query in the search box in the navbar to search projects that you or other users have posted.
 10. Tap 'Logout' on the navbar to logout of the site.
-11.  Clone [Awards](https://github.com/FrancisSakwa89/Awards.git/)to get started and git clone the link in your terminal and open your preffered text editor.
+11.  Clone [Awards](https://github.com/FrancisSakwa89/Awards)to get started and git clone the link in your terminal and open your preffered text editor.
 12. Install requirements.txt file with everything by:
 * pip install -r requirements.txt
 _
