@@ -6,7 +6,6 @@
 ## Description
 A clone of the website for the popular  app Instagram.
 
-Live site at: Live site at: https://insta-app7.herokuapp.com/
 
 ## Setup/Installation Requirements
 1. Open the live site at [Awards]https://award-app7.herokuapp.com/
