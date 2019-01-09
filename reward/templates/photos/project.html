@@ -14,44 +14,40 @@
       <h5 class="card-title firstletter">{{project.title}}</h5>
       <p class="card-text">
         <p>{{project.description}}</p>
-        <p><a target="_blank" href="{{ project.link }}"><button type="button" class="btn btn-info">View Site</button></a>
-        </p>
       </p>
       <p class="card-text" style="color: whitesmoke">Project by: {{project.postername}}</p>
     </div>
   </div>
   <div class="card-letter" style="text-align:center">
-  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-sm" style="background-color:#33705c;">Rate</button></a>
+      <a target="_blank" href="{{ project.link }}"><button type="button" class="btn btn-md" style="background-color:#33705c;">View Site</button></a>  
+      <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-md" style="background-color:#33705c;">Rate</button></a>
   </div>
   <br>
   <br>
 
-  {% if ratings%}
-  <div class="col-md-4 sm-4 xs-4">
-      <br>
 
-  <h5>User Ratings</h5>
-  {% for rating in ratings %}
-  <div class="card text-white bg-primary mb-3">
-      <div class="col-md-4 mx-auto">
+  <h5 style="text-align:center;text-decoration:underline">User Ratings</h5>
+  {% if ratings%}
+    <div class="row">
+      {% for rating in ratings %}
+      <div class="col-md-4">
+  <div class="card text-white bg-dark mb-3">
+      <div class="card-body firstletter" >
           <p>Design: {{rating.design}}</p>
           <p>Usability: {{rating.usability}}</p>
           <p>Content: {{rating.content}}</p>
           <p></p>
           <p>Average: {{rating.average}}</p>
-        <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite title="Source Title">Rated By: {{rating.postername}}</cite></footer>
+        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">Rated By: {{rating.postername}}</cite></footer>
       </div>
     </div>
-  </div>
-  <p></p>
-  {% endfor %}
-  </div>
 </div>
-
+  {% endfor %}
+</div>
   {% else %}
   <h4 style="text-align:center"> No Ratings Upto Now</h4>
   {% endif %}
-</div>
+  </div>
 <style>
 
 .btn btn-primary{

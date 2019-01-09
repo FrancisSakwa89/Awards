@@ -22,8 +22,8 @@
         <br>
         <h5 class="card-title firstletter">{{project.title}}</h5>
         <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
-        <h5 class="card-title firstletter">Posted On:{{project.pub_date}}</h5>
-        <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-sm" style="background-color:#33705c;">View</button></a></p>
+        <h5 class="card-title firstletter" style="font-style:italic;text-decoration: underline;">Posted On: {{project.pub_date}}</h5>
+        <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-md" style="background-color:#33705c;">View</button></a></p>
         <br>
       </div>
     </div>
