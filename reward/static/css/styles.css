@@ -8,7 +8,7 @@ li{
 }
 
 .card-body card-body-cascade text-center wow fadeIn{
-     background-color: skyblue;
+    background: linear-gradient(to right, #16222a, #3a6073);
 }
 .fab {
   padding: 20px;

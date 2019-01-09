@@ -226,3 +226,12 @@ def subscribe(request):
     else:
         form = AwardLetterForm()
     return render(request, 'subscribe.html', {'letterForm':form,'profile':profile})    
+
+def searchme(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  # projects = Project.objects.all().order_by('-pub_date')
+
+  return render(request, 'searchme.html',{'profile':profile})
+

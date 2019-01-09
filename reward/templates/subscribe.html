@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% block content %}
+<hr>
+<hr>
+<div class="container" style="text-align:center">
+<h1>SUBSCRIBE TO MY SITE</h1>
+<p>You will recieve an Email concerning this subcription</p>
+</div>
 <form  action="{%url 'subscribe'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
         {%csrf_token%}
     

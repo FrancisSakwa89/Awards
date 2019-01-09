@@ -14,12 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Material Design Bootstrap -->
-    <!-- <link href="../../css/mdb.min.css" rel="stylesheet">  -->
-
+    
 </head>
 
 <body>
@@ -37,7 +32,7 @@
 
                 <!--Card image-->
                 <div class="view view-cascade overlay wow fadeIn">
-                    <img src="https://images.unsplash.com/photo-1488711500009-f9111944b1ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" width="100%" height="10%">
+                    <img src="https://images.unsplash.com/photo-1502083728181-687546e77613?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" width="100%" height="10%">
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -45,15 +40,15 @@
                 <!--/Card image-->
 
                 <!--Card content-->
-                <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s" style="background-color:skyblue">
+                <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s" style="background: linear-gradient(to right, #16222a, #3a6073);">
                     <!--Title-->
-                    <h4 class="card-title" style="color:black"><strong>Shortcuts</strong></h4>
+                    <h4 class="card-title" style="color:whitesmoke"><strong>Shortcuts</strong></h4>
                     
-
-                        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contacts</a>
-                        <a href="{% url 'newprofile' %}" class="btn btn-primary btn-lg">New Profile</a>
-                        <a href="{% url 'newproject' %}" class="btn btn-primary btn-lg">Add Project</a>
-
+                       <div class="well">
+                        <a href="{% url 'contact' %}" class="btn-lg" style="background-color:#33705c;color: white">Contacts</a>
+                        <a href="{% url 'newprofile' %}" class="btn-lg" style="background-color:#33705c;color: white">New Profile</a>
+                        <a href="{% url 'newproject' %}" class="btn-lg" style="background-color:#33705c;color: white">Add Project</a>
+                        </div>
                 </div>
                 <!--/.Card content-->
 
@@ -85,7 +80,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Add Projects</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'newproject' %}" style="color:green">Add Project</a></li>
+                        <li><a href="{% url 'newproject' %}" style="color:white">Add Project</a></li>
                         
                     </ul>
                 </div>
@@ -97,7 +92,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Projects</h5>
                     <ul class="list-unstyled">
-                        <li><a  href="{% url 'myprojects' %}" style="color:green">My Projects</a></li>
+                        <li><a  href="{% url 'myprojects' %}" style="color:white">My Projects</a></li>
                         
                     </ul>
                 </div>
@@ -109,7 +104,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4" style="color:white">Profile</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'profile' profile.id %}" style="color:green">My Profile</a></li>
+                        <li><a href="{% url 'profile' profile.id %}" style="color:white">My Profile</a></li>
                         
                     </ul>
                 </div>
@@ -119,20 +114,7 @@
         </div>
         <!--/.Footer Links-->
 
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action text-center my-4">
-            <ul class="list-unstyled list-inline">
-                <li class="list-inline-item">
-                    <h5 style="color:white">Register for free</h5>
-                </li>
-                <li class="list-inline-item"><a href="/accounts/register/" class="btn btn-primary">Sign up!</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
-        <hr>
+        
 
         <!--Social buttons-->
         <div class="social-section text-center">

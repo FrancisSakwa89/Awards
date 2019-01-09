@@ -21,13 +21,13 @@
     </div>
   </div>
   <div class="card-letter" style="text-align:center">
-  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
+  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-sm" style="background-color:#33705c;">Rate</button></a>
   </div>
   <br>
   <br>
 
   {% if ratings%}
-  <div class="col-md-4 mx-auto">
+  <div class="col-md-4 sm-4 xs-4">
       <br>
 
   <h5>User Ratings</h5>

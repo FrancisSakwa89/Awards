@@ -18,6 +18,7 @@ urlpatterns=[
     url(r'^subscribe/', views.subscribe, name='subscribe'),
     url(r'^myprojects/', views.myprojects, name='myprojects'),
     url(r'^password/', views.password, name='password'),
+    url(r'^searchme/', views.searchme, name='searchme'),
 
 
 ]    

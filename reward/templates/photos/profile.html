@@ -30,19 +30,20 @@
       <h4>Your projects</h4>
       <p></p>
       {% if projects %}
+      <div class="row">
       {% for project in projects %}
-      <div class="col-sm-6 col-xs-6 col-md-6">
+      <div class="col-md-4">
           <img class='streamimg' src="{{project.image.url}}" height="300px" width="95%"  alt="{{ project.title }}"></img>
           <br>
             <h5 class="card-title firstletter">{{project.title}}</h5>
             <p class="card-text firstletter">{{ project.description | truncatechars:450 }}</p>
-            <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+            <p class="card-text"><a href="{% url 'project' project.id %}"><button type="button" class="btn btn-sm" style="background-color:#33705c;">View</button></a></p>
             <br>
         </div>
         <br>
       {% endfor %}
       
-      
+      </div>
       {% else %}
       <h4 style="text-align: center">No Projects to show, Add one <a href="{% url 'newproject' %}">here</a>.</h4>
       {% endif %}
